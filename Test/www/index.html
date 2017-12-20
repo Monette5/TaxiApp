@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+ 
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta http-equiv="Content-Security-Policy">
+        <script type="text/javascript" src="cordova.js"></script>
+<!-- 		<script type="text/javascript" src="js/jqxcore.js"></script>
+		<script type="text/javascript" src="js/jqxgrid.js"></script> -->
+		
+		        <!-- jQuery -->
+        <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+        <script type="text/javascript" id="jqm-trans-disable">
+		
+            /* For having a faster transition */
+            $(document).on("mobileinit", function() {
+                            $.mobile.defaultPageTransition = "none";
+                            $.mobile.defaultDialogTransition = "none";
+            });
+        </script>
+		<!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+        <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>        
+        <script type="text/javascript" src="js/index.js"></script>
+        <title>MegaMax Sale</title>
+    </head>
+    <body>
+	<form id="myform" name="myform">
+        <div class="app">
+	   <h1>MegaMax Sale</h1>
+       <span style="display:inline-block">
+	  	   <!-- TODO I. User Information -->
+		<label for=oucu style="display:block">Salesperson:</label>
+        <input type="text"id="oucu"name="oucu"size="9"> 
+		</span>
+		<span style="display:inline-block">
+		<label for=client_id style="display:block">Client ID:</label>
+        <input type="text"id="client_id"name="client_id"size="9">
+		</span><br>
+		<span style="display:inline-block">
+		<label for=password style="display:block;">Password:</label>
+        <input type="password"id="pass"name="pass"size="9"style="left:0px;"><!--code defaults but take out before submit-->
+		</span><br>
+	    <span style="display:inline-block">
+	   <!-- TODO II. Widget navigation buttons -->
+	    <button type=button id="previous" onclick="app.megaMaxSale.previous()">Prev Widget</button>
+		</span>
+		<span style="display:inline-block">
+		<button type=button id="next" onclick="app.megaMaxSale.next()">Next Widget</button>
+	   </span> 
+       <span style="display:inline-block">
+	   <!-- TODO III. Widget display-->
+		<label for=number style="display:block">Number:</label>
+        <input type="text"id="number"name="number"size="5"> 
+		</span><br>
+		<!--placeholder for widgets -->
+		<div id="imagename">
+		<img src = "img" id="img" > 
+		<p><output type="text" id = "description"></p>
+		<input name="widget_id" id ="widget_id" type="hidden"></div>
+		<div class="ui-grid-solo">
+		<div class="ui-block-a"id="output"></div>
+		</div>
+		<input type="hidden" name="order_id" id ="order_id">
+		<!--next inputs-->
+		<span style="display:inline-block">
+		<label for=pence_price style="display:block">Asking price</label>
+        <input type="text"id="pence_price"name="pence_price"size="5" readonly></p> 
+		</span>
+		<span style="display:inline-block">
+		<label for=discount style="display:block">Discounted:</label>
+        <input type="text"id="discount"name="discount"size="5">
+	   </span><br>
+	      <!-- <div class="ui-block-solo"><button type="button" id="deleteOrders" onclick="app.megaMaxSale.deleteOrders()">Delete Orders</button></div> Future use to delete orders-->
+	     <!-- TODO IV. Order navigation buttons and display -->
+	   <div class="ui-grid-b">
+  <div class="ui-block-a"><button type="button" id="prevorder" onclick="app.megaMaxSale.prevorder()">Prev Order</button></div>
+  <div class="ui-block-b"><button type="button" id="nextorder" onclick="app.megaMaxSale.nextorder()">Next Order</button></div>
+   <div class="ui-block-c"><button type="button" id="addtoorder" onclick="app.megaMaxSale.addToItemList()">Add to Order</button></div>
+
+</div>
+Orders:<output type="text" id="order_out" name = "order_out">
+</div>
+
+ <!-- You can use the first two rows to hold the greeting and order address/time. And say rows 4-6 for the subtotal - longitude parts. Items can be repeatedly added to row 3 which will shift everything else down. The rows can be split into two cells if needs be (i.e. Cell1: Subtotal, Cell2: 102.38 GBP)
+-->
+
+<ul id = "order_list">
+</ul>
+<table id = "client_table">
+<tr>
+  <td></td>
+   </tr>
+</table>
+
+<table id = "order_table" style ="width:100%"></table>
+
+<table id = "totals_table" style ="width:100%">
+
+<tr>
+    <td>Subtotal:</td>
+     <td align="right"></td>
+   </tr>
+  <tr>
+    <td>VAT:</td>
+	<td align="right"></td>   
+   </tr>
+  <tr>
+    <td>Total is:</td>
+	<td align="right"></td>
+   </tr>
+     <tr>
+    <td>Latitude:</td>
+	<td align="right"></td>
+    </tr>
+  <tr>
+    <td>Longitude:</td>
+	<td align="right"></td>
+    </tr>
+</table> 
+<div class="ui-grid-solo">
+
+  <div class="ui-block-a"><button type="button" id="deleteorders" onclick="app.megaMaxSale.deleteorders()">Delete Orders</button></div>
+
+</div>
+<!-- Subtotal:<input type = "number" id = "subtotal"><br>
+VAT:<input type = "number" id = "VAT"><br>
+Total is:<input type = "number" id = "total"><br> -->
+
+<div class="ui-grid-solo">
+
+  <div class="ui-block-a"><button type="button" id="placeneworder" onclick="app.megaMaxSale.placeneworder()">Place New Order</button></div>
+
+</div>
+
+
+<!-- TODO V. Map canvas -->
+     <canvas style="width:100%;height:80%;" id="map_canvas">
+      </canvas>
+	  </div>
+       <!-- </div>-->
+	   </form>
+    </body>
+</html>
