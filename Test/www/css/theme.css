@@ -1,0 +1,76 @@
+/* CSS for this project
+    Created on : 23-Jan-2017, 14:17:29
+    Author     : TM352
+*/
+
+.megamax{
+   font-family:cursive;
+   font-style: italic;
+   color: salmon;
+}
+
+table {
+   table-layout: auto;
+   width: 40%;
+   border: 1px solid black; 
+}
+
+th {
+   background-color: #4CAF50;
+   color: white;
+   padding: 10px;
+   text-align: left;  
+   border: 1px solid black; 
+}
+
+td{
+   padding: 10px;
+   text-align: left;  
+   border: 1px solid black; 
+}
+
+h1 {
+   color: maroon;
+   font-family:verdana;
+}
+
+h2 {
+   color: brown;
+   font-family:verdana;
+   font-style: italic;
+}
+
+/* all legends get a colour and size */
+legend {
+   color: darkviolet; 
+   font-size: x-large; 
+}
+
+/* all fieldsets get a background colour! */
+fieldset {
+   background-color: lightblue;   
+}
+
+/* all labels are right-aligned, amongst other things */
+label{
+   display: inline-block;
+   float: left;
+   clear: left;
+   width: 200px;
+   padding-right:10px;
+   text-align: right;
+}
+
+/* all inputs and textareas have the same width and are left-aligned
+(but see below for exceptions) */
+input, textarea, select {
+   padding: 9px; 
+   width: 100px;
+   display: inline-block;
+   float: left;
+}
+
+/* all inputs whose type is checkbox don't get the larger width */
+input[type=checkbox]{
+   width:auto
+}
